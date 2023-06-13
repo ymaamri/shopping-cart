@@ -23,13 +23,18 @@ function Cart() {
           }
         })}
       </div>
-      {TotalAmount > 0 ?
-      <div className="checkout">
-        <p>Subtotal: ${TotalAmount}</p>
-        <button onClick={() => navigate("/")}> Continue Shopping </button>
-        <button> Checkout </button>
-      </div>
-       : <h2>Your Cart Is Empty</h2>}
+      {TotalAmount > 0 ? (
+        <div className="checkout">
+          <p>Subtotal: ${TotalAmount}</p>
+          <button onClick={() => navigate("/shopping-cart")}>
+            {" "}
+            Continue Shopping{" "}
+          </button>
+          <button> Checkout </button>
+        </div>
+      ) : (
+        <h2>Your Cart Is Empty</h2>
+      )}
     </div>
   );
 }
