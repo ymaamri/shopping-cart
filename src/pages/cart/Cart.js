@@ -12,29 +12,32 @@ function Cart() {
   const navigate = useNavigate();
 
   return (
-    <div className="cart">
-      <div>
-        <h1>Your Cart Items</h1>
-      </div>
-      <div className="cart-items">
-        {PRODUCTS.map((product) => {
-          if (cartItems[product.id] !== 0) {
-            return <CartItem key={product.id} data={product} />;
-          }
-        })}
-      </div>
-      {TotalAmount > 0 ? (
-        <div className="checkout">
-          <p>Subtotal: ${TotalAmount}</p>
-          <button onClick={() => navigate("/shopping-cart")}>
-            {" "}
-            Continue Shopping{" "}
-          </button>
-          <button> Checkout </button>
+    <div className="cart-section">
+      <div className="container">
+        <div className="cart">
+          <div>
+            <h1>Your Cart Items</h1>
+          </div>
+          <div className="cart-items">
+            {PRODUCTS.map((product) => {
+              if (cartItems[product.id] !== 0) {
+                return <CartItem key={product.id} data={product} />;
+              }
+            })}
+          </div>
+          {TotalAmount > 0 ? (
+            <div className="checkout">
+              <p>Subtotal: ${TotalAmount}</p>
+              <button onClick={() => navigate("/shopping-cart")}>
+                Continue Shopping
+              </button>
+              <button> Checkout </button>
+            </div>
+          ) : (
+            <h2>Your Cart Is Empty</h2>
+          )}
         </div>
-      ) : (
-        <h2>Your Cart Is Empty</h2>
-      )}
+      </div>
     </div>
   );
 }
